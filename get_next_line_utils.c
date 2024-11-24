@@ -6,90 +6,91 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:06:44 by wimam             #+#    #+#             */
-/*   Updated: 2024/11/23 06:04:18 by wimam            ###   ########.fr       */
+/*   Updated: 2024/11/24 01:55:33 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char	*ft_init(char *str)
+{
+	char	*buffer;
+	if (!str)
+	{
+		buffer = malloc(1);
+		buffer[0] = '\0';
+		return(buffer);
+	}
+	return (str);
+}
+
 int		ft_strlen(char *str)
 {
-	int 	len;
+	int len;
 
-	len = 0;
 	if (!str)
-		return (len);
+		return (0);
+	len = 0;
 	while (str[len] != '\0')
 		len++;
-	return (len);
+	return (len);		
 }
 
-int		ft_strlen_to_new_line(char *str)
+int		ft_new_line_check(char *str)
 {
-	int	len;
-
-	len = 0;
+	int	i;
 	if (!str)
-		return (len);
-	while(str[len] != '\n' && str[len] != '\0')
-		len++;
-	return (len);
+		return (0);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strljoin(char *s1, char *s2, int size)
 {
 	int		i;
 	int		j;
+	int		len;
 	char	*buffer;
 
-	i = 0;
-	if (!s1)
-		return (s2);
-	buffer = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	len = ft_strlen(s1) + size;
+	buffer = malloc(len + 1);
 	if (!buffer)
 		return (NULL);
+	i = 0;
 	while (s1[i] != '\0')
 	{
 		buffer[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j] != '\0')
+	while (s2[j] != '\0' && j < size)
 	{
 		buffer[i + j] = s2[j];
 		j++;
 	}
 	buffer[i + j] = '\0';
-	if (s1)
-		free(s1);
+	free(s1);
 	return (buffer);
 }
 
-int		ft_new_line_check(const char *str)
-{
-	if (!str)
-		return (0);
-	while (*str)
-	{
-		if(*str == '\n')
-			return (1);
-		str++;
-	}
-	return (0);
-}
-
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	char	*dup;
-	size_t	len;
-	size_t	i;
+	int		len;
+	int		i;
 
 	len = 0;
 	if (!s)
 		return (NULL);
-	while (s[len])
+	while (s[len] != '\0')
 		len++;
-	dup = (char *)malloc(len + 1);
+	dup = malloc(len + 1);
 	if (!dup)
 		return (NULL);
 	i = 0;
@@ -101,4 +102,6 @@ char	*ft_strdup(const char *s)
 	dup[i] = '\0';
 	return (dup);
 }
+
+
 
