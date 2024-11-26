@@ -6,47 +6,56 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:04:55 by wimam             #+#    #+#             */
-/*   Updated: 2024/11/26 19:06:06 by wimam            ###   ########.fr       */
+/*   Updated: 2024/11/26 19:58:21 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_get_data(int fd, char *old)
+static char	*ft_read(int fd, char **buffer)
 {
-	char	*tmp;
-	char	*buffer;
 	int		read_byte;
+	char	*tmp;
+
+	tmp = malloc(BUFFER_SIZE + 1);
+	if (!tmp)
+		return (NULL);
+	tmp[BUFFER_SIZE] = '\0';
+	read_byte = 0;
+	*buffer = ft_init(NULL);
+	read_byte = read(fd, tmp, BUFFER_SIZE);
+	while (read_byte > 0)
+	{
+		*buffer = ft_strljoin(*buffer, tmp, read_byte);
+		if (ft_new_line_check(tmp))
+			break ;
+		read_byte = read(fd, tmp, BUFFER_SIZE);
+	}
+	free(tmp);
+	if (read_byte <= 0 && !*buffer)
+	{
+		free(*buffer);
+		return (NULL);
+	}
+	return (*buffer);
+}
+
+static char	*ft_get_data(int fd, char *old)
+{
+	char	*buffer;
 	char	*data;
 
 	if (ft_new_line_check(old))
 		return (old);
 	if (!old)
 		old = ft_init(NULL);
-	tmp = malloc(BUFFER_SIZE + 1);
-	if (!tmp)
-		return (NULL);
-	tmp[BUFFER_SIZE] = '\0';
-	read_byte = 0;
-	buffer = ft_init(NULL);
-	while ((read_byte = read(fd, tmp, BUFFER_SIZE)) > 0)
-	{
-		buffer = ft_strljoin(buffer, tmp, read_byte);
-		if (ft_new_line_check(tmp))
-			break ;
-	}
-	free(tmp);
-	if (read_byte <= 0 && !buffer)
-	{
-		free(buffer);
-		return (NULL);	
-	}
+	buffer = ft_read(fd, &buffer);
 	data = ft_strljoin(old, buffer, ft_strlen(buffer));
 	free(buffer);
 	return (data);
 }
 
-char	*ft_get_line(char	*data)
+static char	*ft_get_line(char	*data)
 {
 	int		i;
 	char	*line;
@@ -68,7 +77,7 @@ char	*ft_get_line(char	*data)
 	return (line);
 }
 
-char	*ft_update_data(char *text)
+static char	*ft_update_data(char *text)
 {
 	int		trim_len;
 	int		text_len;
