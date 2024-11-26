@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:06:44 by wimam             #+#    #+#             */
-/*   Updated: 2024/11/24 01:55:33 by wimam            ###   ########.fr       */
+/*   Updated: 2024/11/26 18:58:53 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,32 @@
 char	*ft_init(char *str)
 {
 	char	*buffer;
+
 	if (!str)
 	{
 		buffer = malloc(1);
 		buffer[0] = '\0';
-		return(buffer);
+		return (buffer);
 	}
 	return (str);
 }
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int len;
+	int	len;
 
 	if (!str)
 		return (0);
 	len = 0;
 	while (str[len] != '\0')
 		len++;
-	return (len);		
+	return (len);
 }
 
-int		ft_new_line_check(char *str)
+int	ft_new_line_check(char *str)
 {
 	int	i;
+
 	if (!str)
 		return (0);
 	i = 0;
@@ -102,6 +104,3 @@ char	*ft_strdup(char *s)
 	dup[i] = '\0';
 	return (dup);
 }
-
-
-

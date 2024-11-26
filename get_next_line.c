@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:04:55 by wimam             #+#    #+#             */
-/*   Updated: 2024/11/24 02:21:11 by wimam            ###   ########.fr       */
+/*   Updated: 2024/11/26 19:06:06 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_get_line(char	*data)
 {
 	int		i;
 	char	*line;
-	
+
 	if (*data == '\0')
 		return (NULL);
 	i = 0;
@@ -58,7 +58,7 @@ char	*ft_get_line(char	*data)
 		i++;
 	line = malloc(i + 1 + 1);
 	i = 0;
-	while (data[i] != '\0' &&data[i] != '\n')
+	while (data[i] != '\0' && data[i] != '\n')
 	{
 		line[i] = data[i];
 		i++;
@@ -78,7 +78,7 @@ char	*ft_update_data(char *text)
 	trim_len = 0;
 	while (text[trim_len] != '\0' && text[trim_len] != '\n')
 		trim_len++;
-	if(trim_len == text_len)
+	if (trim_len == text_len)
 	{
 		free(text);
 		return (NULL);
@@ -91,12 +91,11 @@ char	*ft_update_data(char *text)
 
 char	*get_next_line(int fd)
 {
-	static	char	*data;
-	char			*line;
+	static char	*data;
+	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)	
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-
 	data = ft_get_data(fd, data);
 	line = ft_get_line(data);
 	data = ft_update_data(data);

@@ -6,13 +6,9 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:03:16 by wimam             #+#    #+#             */
-/*   Updated: 2024/11/24 01:55:45 by wimam            ###   ########.fr       */
+/*   Updated: 2024/11/26 18:57:34 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
