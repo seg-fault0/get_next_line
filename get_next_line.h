@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:03:16 by wimam             #+#    #+#             */
-/*   Updated: 2024/11/26 18:57:34 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 00:14:02 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
 
 int		ft_strlen(char *str);
 char	*ft_strljoin(char *s1, char *s2, int size);
