@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:04:55 by wimam             #+#    #+#             */
-/*   Updated: 2024/11/26 19:58:21 by wimam            ###   ########.fr       */
+/*   Updated: 2024/11/30 02:16:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ static char	*ft_read(int fd, char **buffer)
 	}
 	free(tmp);
 	if (read_byte <= 0 && !*buffer)
-	{
-		free(*buffer);
-		return (NULL);
-	}
+		return (free(*buffer), NULL);
 	return (*buffer);
 }
 
@@ -88,10 +85,7 @@ static char	*ft_update_data(char *text)
 	while (text[trim_len] != '\0' && text[trim_len] != '\n')
 		trim_len++;
 	if (trim_len == text_len)
-	{
-		free(text);
-		return (NULL);
-	}
+		return (free(text), NULL);
 	trim_len++;
 	new_text = ft_strdup(text + trim_len);
 	free(text);
