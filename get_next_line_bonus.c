@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:07:08 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 02:24:18 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 03:01:08 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,10 @@ static char	*ft_update_data(char *text)
 
 char	*get_next_line(int fd)
 {
-	static char	*data[1024];
+	static char	*data[10240];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= 10240)
 		return (NULL);
 	data[fd] = ft_get_data(fd, data[fd]);
 	line = ft_get_line(data[fd]);
