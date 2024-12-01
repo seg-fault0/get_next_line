@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:06:01 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 00:10:26 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 06:37:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,13 @@ char	*ft_strljoin_bonus(char *s1, char *s2, int size)
 
 	len = ft_strlen_bonus(s1) + size;
 	buffer = malloc(len + 1);
-	if (!buffer)
+	if (!buffer || !s2)
 		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
-	{
+	if (!s1)
+		s1 = ft_init_bonus(NULL);
+	i = -1;
+	while (s1[++i] != '\0')
 		buffer[i] = s1[i];
-		i++;
-	}
 	j = 0;
 	while (s2[j] != '\0' && j < size)
 	{

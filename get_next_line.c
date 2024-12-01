@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:04:55 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 06:25:27 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 06:47:56 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static char	*ft_read(int fd)
 	char	*tmp;
 
 	tmp = malloc(BUFFER_SIZE + 1);
+	if (!tmp)
+		return (NULL);
 	tmp[BUFFER_SIZE] = '\0';
 	read_byte = 0;
 	buffer = ft_init(NULL);
@@ -56,6 +58,8 @@ static char	*ft_get_line(char	*data)
 	int		i;
 	char	*line;
 
+	if (!data)
+		return (NULL);
 	if (*data == '\0')
 		return (NULL);
 	i = 0;
@@ -79,6 +83,8 @@ static char	*ft_update_data(char *text)
 	int		text_len;
 	char	*new_text;
 
+	if (!text)
+		return (NULL);
 	text_len = ft_strlen(text);
 	trim_len = 0;
 	while (text[trim_len] != '\0' && text[trim_len] != '\n')

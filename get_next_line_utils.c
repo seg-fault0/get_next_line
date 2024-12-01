@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:06:44 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 05:11:15 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 06:35:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*ft_strljoin(char *s1, char *s2, int size)
 
 	len = ft_strlen(s1) + size;
 	buffer = malloc(len + 1);
-	if (!buffer)
+	if (!buffer || !s2)
 		return (NULL);
 	if (!s1)
 		s1 = ft_init(NULL);
