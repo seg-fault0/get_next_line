@@ -6,31 +6,32 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:04:55 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 04:56:24 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 05:18:23 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_read(int fd, char **buffer)
+static char	*ft_read(int fd)
 {
 	int		read_byte;
+	char	*buffer;
 	char	tmp[BUFFER_SIZE + 1];
 
 	tmp[BUFFER_SIZE] = '\0';
 	read_byte = 0;
-	*buffer = ft_init(NULL);
+	buffer = ft_init(NULL);
 	read_byte = read(fd, tmp, BUFFER_SIZE);
 	while (read_byte > 0)
 	{
-		*buffer = ft_strljoin(*buffer, tmp, read_byte);
+		buffer = ft_strljoin(buffer, tmp, read_byte);
 		if (ft_new_line_check(tmp))
 			break ;
 		read_byte = read(fd, tmp, BUFFER_SIZE);
 	}
-	if (read_byte <= 0 && !*buffer)
+	if (read_byte <= 0 && !buffer)
 		return (NULL);
-	return (*buffer);
+	return (buffer);
 }
 
 static char	*ft_get_data(int fd, char *old)
@@ -42,7 +43,7 @@ static char	*ft_get_data(int fd, char *old)
 		return (old);
 	if (!old)
 		old = ft_init(NULL);
-	buffer = ft_read(fd, &buffer);
+	buffer = ft_read(fd);
 	data = ft_strljoin(old, buffer, ft_strlen(buffer));
 	free(buffer);
 	return (data);
