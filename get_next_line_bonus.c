@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:07:08 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 00:22:50 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 02:24:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*ft_read(int fd, char **buffer)
 	}
 	free(tmp);
 	if (read_byte <= 0 && !*buffer)
-		return (free(*buffer), NULL);
+		return (NULL);
 	return (*buffer);
 }
 
