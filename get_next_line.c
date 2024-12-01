@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:04:55 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 02:24:04 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 04:56:24 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 static char	*ft_read(int fd, char **buffer)
 {
 	int		read_byte;
-	char	*tmp;
+	char	tmp[BUFFER_SIZE + 1];
 
-	tmp = malloc(BUFFER_SIZE + 1);
-	if (!tmp)
-		return (NULL);
 	tmp[BUFFER_SIZE] = '\0';
 	read_byte = 0;
 	*buffer = ft_init(NULL);
@@ -31,7 +28,6 @@ static char	*ft_read(int fd, char **buffer)
 			break ;
 		read_byte = read(fd, tmp, BUFFER_SIZE);
 	}
-	free(tmp);
 	if (read_byte <= 0 && !*buffer)
 		return (NULL);
 	return (*buffer);

@@ -6,19 +6,19 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:05:01 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 04:45:12 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/01 04:57:29 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 int		ft_strlen_bonus(char *str);
 char	*ft_strljoin_bonus(char *s1, char *s2, int size);
