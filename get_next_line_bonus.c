@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:07:08 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 06:49:17 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/03 00:23:02 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static char	*ft_get_data(int fd, char *old)
 	char	*buffer;
 	char	*data;
 
+	if (read(fd, 0, 0) == -1)
+		return (free(old), NULL);
 	if (ft_new_line_check_bonus(old))
 		return (old);
 	if (!old)
