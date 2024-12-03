@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:06:01 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/01 06:37:12 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/03 21:52:55 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_init_bonus(char *str)
 	if (!str)
 	{
 		buffer = malloc(1);
+		if (!buffer)
+			return (NULL);
 		buffer[0] = '\0';
 		return (buffer);
 	}

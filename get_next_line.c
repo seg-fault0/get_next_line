@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 05:04:55 by wimam             #+#    #+#             */
-/*   Updated: 2024/12/03 00:20:42 by wimam            ###   ########.fr       */
+/*   Updated: 2024/12/03 21:52:31 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static char	*ft_get_line(char	*data)
 	while (data[i] != '\0' && data[i] != '\n')
 		i++;
 	line = malloc(i + 1 + 1);
+	if (!line)
+		return (NULL);
 	i = 0;
 	while (data[i] != '\0' && data[i] != '\n')
 	{
